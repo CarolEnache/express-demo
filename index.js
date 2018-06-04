@@ -22,7 +22,7 @@ app.post('/api/courses', (req, res) => {
         id: courses.lenght + 1,
         name: req.body.name
     };
-    course.push(course);
+    courses.push(course);
     res.send(course);
 });
 
