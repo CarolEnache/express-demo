@@ -19,6 +19,13 @@ app.get('/api/courses', (req, res) => {
 });
 
 app.post('/api/courses', (req, res) => {
+    const schema = {
+        name: Joi.string().min(3).required()
+    };
+
+    const result  = Joi.validate(req.body, schema);
+    console.log(result);
+
     const course = {
         id: courses.length + 1,
         name: req.body.name
@@ -35,4 +42,4 @@ app.get('/api/courses/:id', (req, res) => {
 }) 
 
 const port = process.env.PORT || 3000
-app.listen(3000, () => console.log(`listen on port ${port}...`));
+app.listen(port, () => console.log(`listen on port ${port}...`));
